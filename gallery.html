@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Venus Handicrafts | Gallery – Artistry in Every Frame</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <h1>Venus Handicrafts</h1>
+        <p>EST. 1972 · ARTISAN LEGACY</p>
+      </div>
+      <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+        <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="gallery-hero">
+    <div class="container">
+      <h1>Artistry in Every Frame</h1>
+      <p>Explore the timeless beauty of handcrafted treasures — each piece a story of tradition, skill, and elegance.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Filter Buttons -->
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="iron">Iron</button>
+      <button class="filter-btn" data-filter="glass">Glass</button>
+      <button class="filter-btn" data-filter="brass">Brass</button>
+      <button class="filter-btn" data-filter="wood">Wood</button>
+      <button class="filter-btn" data-filter="aluminium">Aluminium</button>
+      <button class="filter-btn" data-filter="decor">Home Décor</button>
+      <button class="filter-btn" data-filter="tableware">Tableware</button>
+      <button class="filter-btn" data-filter="candle">Candle Acc.</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Images will be injected via JS for better maintainability, but we'll also include static data-attributes -->
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Venus Handicrafts</h4>
+        <p>Preserving heritage, delivering artistry since 1972. Global exports of premium handicrafts.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><i class="fas fa-envelope"></i> gallery@venushandicrafts.com</li>
+          <li><i class="fas fa-globe"></i> www.venushandicrafts.com</li>
+        </ul>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Venus Handicrafts — Crafting Tradition, Delivering Excellence.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox Structure -->
+<div id="lightbox" class="lightbox">
+  <button class="close-lightbox" id="close-lightbox-btn">&times;</button>
+  <button class="nav-lightbox prev" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="Gallery enlarged">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+  <button class="nav-lightbox next" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<script>
+  // ---------- GALLERY DATA (high quality imagery with placeholders but descriptive categories) ----------
+  // Using elegant, high-quality Unsplash-style placeholders with descriptive themes to match aesthetics.
+  const galleryItems = [
+    { id: 1, category: "iron", title: "Wrought Iron Candle Holders", img: "https://placehold.co/800x800/CCB294/4A2E1E?text=Iron+Candle+Holders" },
+    { id: 2, category: "iron", title: "Antique Iron Wall Art", img: "https://placehold.co/800x800/D2B48C/4A2E1E?text=Iron+Wall+Sculpture" },
+    { id: 3, category: "glass", title: "Handblown Glass Vase Collection", img: "https://placehold.co/800x800/D8C2A2/4A2E1E?text=Art+Glass+Vase" },
+    { id: 4, category: "glass", title: "Crystal Accent Bowls", img: "https://placehold.co/800x800/E0C9AA/4A2E1E?text=Glass+Decorative+Bowls" },
+    { id: 5, category: "brass", title: "Brass Diyas & Oil Lamps", img: "https://placehold.co/800x800/C9B18B/4A2E1E?text=Brass+Lamp+Set" },
+    { id: 6, category: "brass", title: "Hand-Engraved Brass Trays", img: "https://placehold.co/800x800/D5BC96/4A2E1E?text=Brass+Serveware" },
+    { id: 7, category: "wood", title: "Mango Wood Serving Boards", img: "https://placehold.co/800x800/CBB68E/4A2E1E?text=Wooden+Charcuterie" },
+    { id: 8, category: "wood", title: "Carved Wooden Wall Panels", img: "https://placehold.co/800x800/DCC29E/4A2E1E?text=Wood+Wall+Art" },
+    { id: 9, category: "aluminium", title: "Hammered Aluminium Trays", img: "https://placehold.co/800x800/D1B888/4A2E1E?text=Aluminium+Home+Decor" },
+    { id: 10, category: "aluminium", title: "Geometric Aluminium Vases", img: "https://placehold.co/800x800/C9AE82/4A2E1E?text=Aluminium+Vase" },
+    { id: 11, category: "decor", title: "Bohemian Wall Mirrors", img: "https://placehold.co/800x800/E1CEAC/4A2E1E?text=Home+Decor+Mirror" },
+    { id: 12, category: "decor", title: "Ethnic Showpiece Sets", img: "https://placehold.co/800x800/DEC29F/4A2E1E?text=Showpiece+Decor" },
+    { id: 13, category: "tableware", title: "Artisanal Dinner Set", img: "https://placehold.co/800x800/D5B992/4A2E1E?text=Ceramic+Tableware" },
+    { id: 14, category: "tableware", title: "Hand-Painted Serving Platter", img: "https://placehold.co/800x800/DBC09C/4A2E1E?text=Platter+Handicraft" },
+    { id: 15, category: "candle", title: "Vintage Iron Candle Lanterns", img: "https://placehold.co/800x800/CEB18B/4A2E1E?text=Candle+Lanterns" },
+    { id: 16, category: "candle", title: "Brass & Glass Candle Holders", img: "https://placehold.co/800x800/DAC09A/4A2E1E?text=Brass+Candle+Holder" },
+    { id: 17, category: "wood", title: "Decorative Wooden Boxes", img: "https://placehold.co/800x800/D8C09E/4A2E1E?text=Wood+Storage+Boxes" },
+    { id: 18, category: "glass", title: "Stained Glass Lampshades", img: "https://placehold.co/800x800/DEC6A8/4A2E1E?text=Glass+Lampshade" },
+    { id: 19, category: "iron", title: "Iron Scroll Wall Decor", img: "https://placehold.co/800x800/CFB690/4A2E1E?text=Iron+Wall+Hanging" },
+    { id: 20, category: "brass", title: "Brass Urli & Decorative Bowls", img: "https://placehold.co/800x800/D9BF99/4A2E1E?text=Brass+Urli" },
+    { id: 21, category: "decor", title: "Terracotta & Mixed Media Art", img: "https://placehold.co/800x800/E3D0B0/4A2E1E?text=Boho+Home+Decor" },
+    { id: 22, category: "tableware", title: "Handcrafted Cutlery Set", img: "https://placehold.co/800x800/D1B589/4A2E1E?text=Wooden+Cutlery" },
+    { id: 23, category: "candle", title: "Ceramic Candle Vessels", img: "https://placehold.co/800x800/DCC1A0/4A2E1E?text=Ceramic+Candle+Pot" },
+    { id: 24, category: "aluminium", title: "Aluminium Tea Light Holders", img: "https://placehold.co/800x800/CFB58B/4A2E1E?text=Aluminium+Tealight" }
+  ];
+
+  const galleryGrid = document.getElementById('gallery-grid');
+  let currentFilter = 'all';
+  let currentLightboxIndex = 0;
+  let filteredItems = [...galleryItems];
+
+  // render gallery based on filter
+  function renderGallery() {
+    const filtered = galleryItems.filter(item => currentFilter === 'all' || item.category === currentFilter);
+    filteredItems = filtered;
+    if (!galleryGrid) return;
+    galleryGrid.innerHTML = '';
+    filtered.forEach((item, idx) => {
+      const col = document.createElement('div');
+      col.className = 'gallery-item';
+      col.setAttribute('data-id', item.id);
+      col.setAttribute('data-category', item.category);
+      col.setAttribute('data-index', idx);
+      const img = document.createElement('img');
+      img.src = item.img;
+      img.alt = item.title;
+      img.loading = 'lazy';
+      const overlayDiv = document.createElement('div');
+      overlayDiv.className = 'overlay';
+      overlayDiv.innerHTML = `<span>${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span><br>${item.title}`;
+      col.appendChild(img);
+      col.appendChild(overlayDiv);
+      col.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const realIndex = filteredItems.findIndex(i => i.id === item.id);
+        openLightbox(realIndex);
+      });
+      galleryGrid.appendChild(col);
+    });
+  }
+
+  // Lightbox logic
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const closeBtn = document.getElementById('close-lightbox-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  function openLightbox(index) {
+    if (!filteredItems.length) return;
+    currentLightboxIndex = index;
+    updateLightboxContent();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateLightboxContent() {
+    const item = filteredItems[currentLightboxIndex];
+    if (item) {
+      lightboxImg.src = item.img;
+      lightboxCaption.innerText = `${item.title} — ${item.category.charAt(0).toUpperCase() + item.category.slice(1)} Craft`;
+    }
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function nextImage() {
+    if (filteredItems.length === 0) return;
+    currentLightboxIndex = (currentLightboxIndex + 1) % filteredItems.length;
+    updateLightboxContent();
+  }
+
+  function prevImage() {
+    if (filteredItems.length === 0) return;
+    currentLightboxIndex = (currentLightboxIndex - 1 + filteredItems.length) % filteredItems.length;
+    updateLightboxContent();
+  }
+
+  // Event listeners for lightbox
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (nextBtn) nextBtn.addEventListener('click', nextImage);
+  if (prevBtn) prevBtn.addEventListener('click', prevImage);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+  });
+
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.getAttribute('data-filter');
+      renderGallery();
+    });
+  });
+
+  // initial render
+  renderGallery();
+
+  // mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu');
+  const navLinks = document.getElementById('nav-links');
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>
